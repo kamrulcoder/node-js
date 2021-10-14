@@ -29,7 +29,7 @@ function  text () {
 console.log(module);
 ```
 
-```json
+```javascript
 
 Module {
   id: '.',
