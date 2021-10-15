@@ -418,3 +418,96 @@ app.listen(PORT,()=> {
 আপনার কোড বা ডেভেলপমেন্ট পদ্ধতিতে নোডেমনের কোনো অতিরিক্ত পরিবর্তন প্রয়োজন হয় না। নোডেমন নোডের জন্য একটি প্রতিস্থাপন মোড়ক। নোডেমন ব্যবহার করতে, আপনার স্ক্রিপ্টটি চালানোর সময় কমান্ড লাইনে নোড শব্দটি প্রতিস্থাপন করুন।
 
 </details >
+
+
+ <details>
+<summary>মিডলওয়্যার আসলে কি ? </summary>
+. মিডলওয়্যার রিকুয়েস্ট ও রেস্পন্সের মধ্যে সম্পর্ক স্থাপনকারী । ইউজার এর HTTP রিকুয়েস্ট ফিল্টার করে রিকুয়েস্টের পরে রেস্পন্স কি হবে তা মিডলওয়্যারে লেখা থাকে।
+
+</details >
+
+
+
+ <details>
+<summary>Morgan  মিডলওয়্যার  কি ? </summary>
+মরগ্যান হলো middlewarer  এর থার্ড পার্টি  একটি লাইব্রেরি।  এর আমাদের আমাদের   প্রজেক্ট এর সবকিছু স্টেটাস সম্পর্কে জানা যায়।  
+
+মরগ্যান ব্যবহার করার জন্য আমাদের যা যা করতে  হবে। ...
+
+- মরণ ইনস্টল করতে হবে 
+- মরগ্যান require  করতে হবে 
+- app.use  এর মাধ্যমে মরগ্যান ফাঙ্কশন কল করে দিতে হবে এবং পেরামিটার হিসেবে dev দিতে হবে 
+
+```javascript 
+// global middleware
+const morgan = require("morgan");
+app.use(morgan("dev"))
+```
+
+</details >
+ <details>
+<summary>Using middleware to specific routes </summary>
+
+আমাদের যদি নির্দিষ্ট কোনো route এ middleware  ব্যবহার করতে চাই তাহলে আমাদের  সেটা  সম্ভব।  ব্যবহার করার নিয়ম হলো - 
+- route  এর সেকেন্ড পেরামিটার হিসেবে ব্যবহার করা যাবে 
+- একাধিক middleware ব্যবহার করা যাবে 
+
+```javascript
+
+app.get("/about",morgan("dev"), (req, res)=> {
+    res.send("Get  About route   ")
+})
+
+```
+</details>
+
+ <details>
+<summary>Custom  MiddleWare  Create  </summary>
+
+আমরা কাস্টম middleware  বানাতে পারি যাতে করে আমরা নিজের কন্ডিশন  বা শর্ত অনুযায়ী কাজ করতে পারি।  
+কাস্টম  middleware  বানাতে হলে আমাদের কে  যা  যা করতে  হবে তা  হলো - 
+- একটি  ফাঙ্কশন নিতে  হবে 
+-  তিনটি পেরামিটার (request, response, next) নেওয়া যায়। 
+- next   ব্যবহার না করলে পরবর্তী রাউটার এ কাজ করবে না 
+
+
+```javascript
+function   customMiddleWare (req, res, next){
+    if (req.url === "/about") {
+        res.send("Sorry This page is blocked ")
+    }
+    next()
+}
+
+app.use(customMiddleWare)
+```
+</details>
+
+
+ <details>
+<summary>What is Express Router   </summary>
+এক্সপ্রেস রাউটার ক্লাস মডুলার মাউন্টেবল রুট হ্যান্ডলার তৈরি করতে ব্যবহার করা যেতে পারে। একটি রাউটার উদাহরণ একটি সম্পূর্ণ মিডলওয়্যার এবং রাউটিং সিস্টেম; এই কারণে এটি প্রায়ই একটি মিনি-অ্যাপ হিসাবে উল্লেখ করা হয়।
+
+```javascript 
+// user  router 
+const   router  = express.Router();
+
+router.get("/login", (req, res) => {
+    res.send("I am Login  router")
+})
+
+// logout router 
+router.get("/logout", (req, res) => {
+    res.send("I am logout  router")
+})
+
+router.get("/signup", (req, res) => {
+    res.send("I am signup  router")
+})
+
+app.use("/user", router)
+
+```
+
+
+</details>
