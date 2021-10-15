@@ -1,9 +1,10 @@
-const  fs = require("fs");
+const http = require('http')
 
-fs.readFile('./test.json', (error, data)=> {
-    if(error){
-        return console.log(error)
-    }
-    let obj =JSON.parse(data);
-    console.log(obj);
+const server = http.createServer((req, res)=> {
+    console.log(req.url)
+    res.end('Node js very beatiful')
+})
+
+server.listen(3000, ()=> {
+    console.log("server is Running  on PORT is 3000");
 })

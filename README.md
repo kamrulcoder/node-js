@@ -302,3 +302,72 @@ fs.readFile('./test.json', (error, data)=> {
 }
 ```
 </details >
+
+<details>
+<summary> NodeJS Http Module  </summary>
+নোড জেস   এর জন্য আমাদের  লোকাল সার্ভার বানাতে যা যা করতে হবে 
+-  এইচটিটিপি   মডিউলে নিতে হ তবে 
+- এইচটিটিপি এর কি  createserver  মেথড ব্যবহার করে রেসপন্স এন্ড রিকোয়েস্ট হ্যান্ডেল করতে হবে 
+- সার্ভার এ listen   দিতে হ তবে 
+
+```javascript
+const http = require('http')
+
+const server = http.createServer((req, res)=> {
+    console.log(req.url)
+    res.end('Node js very beatiful')
+})
+
+server.listen(3000, ()=> {
+    console.log("server is Running  on PORT is 3000");
+})
+
+
+```
+
+</details >
+
+
+
+<details>
+<summary> package কি </summary>
+package কি সেটা জানার আগে আমাদের জানা প্রয়োজন মডিউল সম্পর্কে। মডিউল হলো একটি সিঙ্গেল জাভাস্ক্রিপ্ট ফাইল যার কিছু ফাংশনালিটি আছে। package হলো একটি ডিরেক্টরি যার মধ্যে এক বা একাধিক মডিউল থাকে, এবং একটি package.json ফাইল ও থাকে, যেখানে package এর মেটাডাটা থাকে। একটি package অনেক সাধারণ হতে পারে আবার কমপ্লেক্স ও হতে পারে। যেমন underscore package টা তে শুধু একটি জাভাস্ক্রিপ্ট ফাইল আছে, আবার express underscore package এর রুট এ একটি জাভাস্ক্রিপ্ট ফাইল থাকলেও এর সাব ডিরেক্টরি তে আরও অনেক জাভাস্ক্রিপ্ট ফাইল থাকে।
+</details >
+
+<details>
+<summary> NPM  কি </summary>
+npm হলো পৃথিবীর সবচেয়ে বড় সফটওয়ার রেজিস্ট্রি। যেখানে প্রায় 600,000 প্যাকেজ রয়েছে। সারা পৃথিবীর ওপেন সোর্স ডেভেলাপার রা npm ব্যবহার করে থাকে প্যাকেজ শেয়ার/ব্যবহার করার জন্য। npm এর তিনটি component থাকে।
+</details >
+
+
+<summary>package.json  কি </summary>
+npm হলো পৃথিবীর সবচেয়ে বড় সফটওয়ার রেজিস্ট্রি। যেখানে প্রায় 600,000 প্যাকেজ রয়েছে। সারা পৃথিবীর ওপেন সোর্স ডেভেলাপার রা npm ব্যবহার করে থাকে প্যাকেজ শেয়ার/ব্যবহার করার জন্য। npm এর তিনটি component থাকে।
+</details >
+
+
+<summary>Depencecy কি </summary>
+আমাদের প্রজেক্ট এ থার্ড পার্টি প্যাকেজ গুলো ব্যবহার করা হয় সেগুলো  packege.json   ফাইল এ লিস্ট আকারে থাকে তাকে depencecy  বলে
+</details >
+
+<summary>Dev Depencecy কি </summary>
+আমাদের প্রজেক্ট  এ  ডেভেলপার এর ক্ষেত্রে  থার্ড পার্টি প্যাকেজ গুলো ব্যবহার করা হয় সেগুলো  packege.json   ফাইল এ লিস্ট আকারে থাকে তাকে Dev Depencecy  বলে
+</details >
+
+> ## Express Js 
+
+<summary>Express Js  কি </summary>
+এক্সপ্রেস.জেএস একটি নোড.জেএস ওয়েব অ্যাপ্লিকেশন সার্ভার ফ্রেমওয়ার্ক, একক পৃষ্ঠা, মাল্টি-পৃষ্ঠা এবং হাইব্রিড ওয়েব অ্যাপ্লিকেশন তৈরির জন্য ডিজাইন করা। এটি node.js. এর জন্য ডি ফ্যাক্টো স্ট্যান্ডার্ড সার্ভার ফ্রেমওয়ার্ক
+</details >
+ 
+ 
+<summary>Express Js  Install  </summary>
+ইনস্টল করতে যা যা করতে হবে। ....
+- একটি ফোল্ডার তৈরি করে নিতে হবে 
+- npm  init  করে packege  json  ফাইল  বানাতে  হবে 
+- এক্সপ্রেস ইনস্টল করে নিতে হবে 
+  
+```javascript 
+npm install express --save
+
+```
+</details >
