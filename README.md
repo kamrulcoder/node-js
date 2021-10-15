@@ -374,3 +374,39 @@ npm install express --save
 
 ```
 </details >
+
+
+ <details>
+<summary>Multiple Routes in Express  </summary>
+একটি   প্রজেক্ট এ একাধিক রুট তৈরি করার  সিস্টেম কে মাল্টিপল route বলে। 
+
+এখানে একটি বিষয় খেয়াল রাখতে হবে যে  root  route  বা হোম route  শেষ এ দিতে হবে।  আর যদি notfound  পেজ এর জন্য দেওয়া হয় তাহলে root  route  এর শেষে দিতে হবে 
+
+```javascript 
+const express = require("express");
+
+const app = express();
+
+app.get("/about", (req, res)=> {
+    res.send("Get  About route   ")
+})
+app.get("/contact", (req, res)=> {
+    res.send("Get  Contact  route   ")
+})
+
+
+
+app.get("/", (req, res)=> {
+    res.send("Root route  Get ")
+})
+
+app.get("*", (req, res)=> {
+    res.send("Not found Page ")
+})
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT,()=> {
+    console.log("server is Running PORT is ", PORT);
+})
+```
+</details >
