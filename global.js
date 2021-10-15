@@ -1,22 +1,9 @@
-const add = (a,b) => a+b;
+const  fs = require("fs");
 
-const sub = (a,b) => a-b;
-
-const div = (a,b) => a+b;
-
-const test = (a,b) => add(a,b)/sub(a,b);
-
-// export system 1
-module.exports = {
-    add, 
-    sub,
-    div,
-    test
-}
-
-
-// export system 2
-module.export.add = add;
-module.export.sub = sub;
-module.export.div = div;
-module.export.test = test;
+fs.readFile('./test.json', (error, data)=> {
+    if(error){
+        return console.log(error)
+    }
+    let obj =JSON.parse(data);
+    console.log(obj);
+})

@@ -92,12 +92,10 @@ module.export.test = test;
 
  module.exports. test = (a,b) => add(a,b)/sub(a,b);
  ```
- 
- 
- 
+  
  </details >
  <details >
- <summary> মডিউলে এক্সপোর্ট করার নিয়ম  </summary>
+ <summary> মডিউলে ইম্পোর্ট করার নিয়ম  </summary>
 
  অন্য ফাইল এর এক্সপোর্ট করা ডাটা গুলো ইম্পোর্ট  করার নিয়ম - 
 নোড জেস এ ইম্পোর্ট করার জন্য require  মেথড ব্যবহার করা হয়।
@@ -108,3 +106,199 @@ module.export.test = test;
  
  ```
   </details >
+
+   <details >
+ <summary>Node js Path Module   </summary>
+  ফাইল সিস্টেম কে path   বলে।   আমরা যে লোকেশন এ কাজ করি তাই path মডিউল।  filename  আমাদের ফাইল টি কোন জায়গায় আছে তা বের করা যায়।  পথ একটা মডিউল।  তাই আমাদের require  করে নিতে হবে।  সবার শেষ যে filename  বা ডিরেক্টরি name  থাকে সেটাই basename . 
+
+  ```javascript 
+
+const path = require("path")
+
+console.log(path.basename(__filename)); //  file Name =  global.js
+
+console.log(path.basename(__dirname)); // Folder Name =  node-js
+
+// just file name use 
+console.log(path.extname(__filename)); // Folder Name =  node-js
+
+  ```
+
+  একটি অবজেক্ট কে  real path  ফরম্যাটে   করতে হলে যা করতে  হবে...
+
+  ```javascript 
+
+const path = require("path")
+
+const pathObj = {
+    dir:"ser/lcoal",
+    name:"testFile",
+    ext:".js"
+}
+
+console.log(path.format(pathObj));   // ser/lcoal\testFile.js
+  ```
+   </details >
+
+   <details >
+ <summary>Node js Operating System  Module   </summary>
+অপারেটিং সিস্টেম এর সবকিছু জানতে আমাদের  os  মডিউল ব্যবহার করতে হবে।  যার মাধ্যমে আমাদের অপারেটিং সিস্টেম এর সবকিছু জানতে পারবো 
+
+```javascript 
+const os = require("os")
+console.log(os.arch())
+console.log(os.cpus())
+console.log(os.freemem())
+console.log(os.networkInterfaces())
+```
+
+```javascript 
+x64
+[
+  {
+    model: 'Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz',
+    speed: 1992,
+    times: {
+      user: 3002515,
+      nice: 0,
+      sys: 1028734,
+      idle: 9370812,
+      irq: 131921
+    }
+  },
+  {
+    model: 'Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz',
+    speed: 1992,
+    times: { user: 2897234, nice: 0, sys: 662828, idle: 9841765, irq: 18093 }
+  },
+  {
+    model: 'Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz',
+    speed: 1992,
+    times: { user: 3325625, nice: 0, sys: 710578, idle: 9365609, irq: 17546 }
+  },
+  {
+    model: 'Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz',
+    speed: 1992,
+    times: { user: 3117953, nice: 0, sys: 611093, idle: 9672765, irq: 14421 }
+  }
+]
+3978842112
+{
+  'Wi-Fi': [
+    {
+      address: 'fe80::595f:72ba:e308:4f49',
+      netmask: 'ffff:ffff:ffff:ffff::',
+      family: 'IPv6',
+      mac: '9c:30:5b:e3:84:05',
+      internal: false,
+      cidr: 'fe80::595f:72ba:e308:4f49/64',
+      scopeid: 17
+    },
+    {
+      address: '192.168.0.108',
+      netmask: '255.255.255.0',
+      family: 'IPv4',
+      mac: '9c:30:5b:e3:84:05',
+      internal: false,
+      cidr: '192.168.0.108/24'
+    }
+  ],
+  'Loopback Pseudo-Interface 1': [
+    {
+      address: '::1',
+      netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+      family: 'IPv6',
+      mac: '00:00:00:00:00:00',
+      internal: true,
+      cidr: '::1/128',
+      scopeid: 0
+    },
+    {
+      address: '127.0.0.1',
+      netmask: '255.0.0.0',
+      family: 'IPv4',
+      mac: '00:00:00:00:00:00',
+      internal: true,
+      cidr: '127.0.0.1/8'
+    }
+  ]
+}
+```
+  </details >
+
+   
+ <details>
+ <summary> Write File As Javascript Object  </summary>
+জাভাস্ক্রিপ্ট এর অবজেক্ট কে  writeFile  মডিউল ব্যবহার করে nodejs   দিয়ে একটি json , css  বা যেকোনো ফাইল এ   কনভার্ট করা যায় এবং একটি নতুন ফাইল  তৈরি করা যায়।  এটার জন্য আমাদের যে  মডিউল টি ব্যবহার করা হবে সেটা হলো fs . 
+
+এটির জন্য আমাদের শুরুতে fs  মডিউল require  করে  নিতে হবে।  এবং আমাদের কে একটি জাভাস্ক্রিপ্ট  অবজেক্ট  বানাতে হবে  . আমরা যেহেতু জেসন ফাইল বানাতে যাইতেছি  তাই আমাদের অবজেক্ট টি কে stringify  করে নিতে হবে।   তারপর আমাদের কে os  মডিউলে দিয়ে writeFile  মেথড দিয়ে ফাইল write  করতে হ তবে।  
+
+os  এর writeFile  এ আমাদের কে যা যা করতে হবে  তা  হলো - 
+- ১. শুরুতে  তৈরি করা ফাইল বা যেকোনো ফাইলের নাম দিতে হবে 
+- ২. ডাটা দিতে হবে 
+- ৩. কলব্যাক ফাঙ্কশন দিতে হবে 
+-  ৪. কলব্যাক ফাঙ্কশন এ আমাদের কে এরর হলে কোনো মেসেজ বা এরর না হজলে আমাদের মেসেজ দিতে হবে 
+  
+  
+  ```javascript 
+const  fs = require("fs");
+const  testObj = {
+    name:"kamrul  hasan",
+    email:"kamrul@gmail.com",
+    address:{
+        city:"sherpur",
+        country:"BD"
+    }
+}
+
+const data = JSON.stringify(testObj)
+
+fs.writeFile('test.json',data, (error)=>{
+    if (error) {
+        console.log(error);
+    }else{
+        console.log("you are successfully Write File");
+    }
+})
+  ```
+![image ](https://i.ibb.co/TrKKhGP/write-File-nodejs1.png);
+![image ](https://i.ibb.co/DGfvt03/write-File-nodejs2.png);
+  
+
+</details >
+
+   
+<details>
+<summary> Read File As Javascript Object  </summary>
+
+আমাদের  কোনো ফাইল কে read  করতে fs  মডিউলে এর  readFile  মেথড এর মাধ্যমে   করতে  পারি।  
+এখানে আমি আমাদের যা যা করতে   হবে  - 
+- ১.  fs  মডিউল নিতে  হবে 
+- ২. readFile মেথড  নিতে হবে 
+- ৩. ফাইল নাম  দিতে হবে 
+- ৪. কলব্যাক ফাঙ্কশন নিতে  হবে 
+- ৫. পেরামিটার হিসেবে (error ,data ) নিতে হবে 
+- ৬. জেসন কে parse করতে হবে  
+
+```javascript
+
+const  fs = require("fs");
+
+fs.readFile('./test.json', (error, data)=> {
+    if(error){
+        return console.log(error)
+    }
+    let obj =JSON.parse(data);
+    console.log(obj);
+})
+
+```
+
+```javascript
+{
+  name: 'kamrul  hasan',
+  email: 'kamrul@gmail.com',
+  address: { city: 'sherpur', country: 'BD' }
+}
+```
+</details >
